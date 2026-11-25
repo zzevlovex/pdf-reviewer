@@ -277,7 +277,8 @@ export default function App() {
 
 function KeyField({ label, value, onChange, placeholder, prefix, link, linkText, note }) {
   const [show, setShow] = useState(false);
-  const warn = value && prefix && !value.trim().startsWith(prefix);
+  const prefixes = [].concat(prefix || []);
+  const warn = value && prefixes.length > 0 && !prefixes.some((p) => value.trim().startsWith(p));
   return (
     <div className="field">
       <div className="field-top">
@@ -289,7 +290,7 @@ function KeyField({ label, value, onChange, placeholder, prefix, link, linkText,
           onChange={(e) => onChange(e.target.value)} />
         <button type="button" className="icon-btn" aria-label={show ? 'Hide key' : 'Show key'} onClick={() => setShow(!show)}><I.Eye size={16} /></button>
       </div>
-      <p className={`fine ${warn ? 'warn' : ''}`}>{warn ? `This doesn't look like a ${label} (they start with "${prefix}").` : note}</p>
+      <p className={`fine ${warn ? 'warn' : ''}`}>{warn ? `This doesn't look like a ${label} (they start with ${prefixes.map((p) => `"${p}"`).join(' or ')}).` : note}</p>
     </div>
   );
 }
@@ -310,7 +311,7 @@ function Settings({ keys, onClose, onSave }) {
         </div>
 
         <KeyField
-          label="Gemini API key" prefix="AIza" placeholder="AIza..."
+          label="Gemini API key" prefix={['AIza', 'AQ.']} placeholder="AQ... or AIza..."
           link="https://aistudio.google.com/apikey" linkText="Get a free key"
           note="Main AI. Sign in with Google, click Create API key, paste it here."
           value={draft.gemini} onChange={(gemini) => setDraft({ ...draft, gemini })}
