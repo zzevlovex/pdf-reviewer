@@ -1,0 +1,26 @@
+{
+  "name": "pdf-reviewer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Drop handout PDFs, get an exam reviewer PDF written by free AI (Gemini with Groq backup). Runs entirely in the browser.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.5.438",
+    "pdfmake": "^0.3.15",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.3.0",
+    "vite": "^8.3.8"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "ReviewerStudio",
+  "short_name": "Reviewer",
+  "description": "Turn handout PDFs into an exam reviewer with free AI.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f7fa",
+  "theme_color": "#f7f7fa",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
